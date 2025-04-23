@@ -1,0 +1,22 @@
+{
+    "name": "Spring HATEOAS Development",
+    "dockerComposeFile": "../docker-compose.yml",
+    "service": "app",
+    "workspaceFolder": "/app",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "vscjava.vscode-java-pack",
+                "pivotal.vscode-spring-boot",
+                "ms-azuretools.vscode-docker"
+            ],
+            "settings": {
+                "java.server.launchMode": "Standard",
+                "java.configuration.updateBuildConfiguration": "automatic"
+            }
+        }
+    },
+    "remoteUser": "root",
+    "forwardPorts": [8080],
+    "shutdownAction": "stopCompose"
+}

@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  app:
+    build: .
+    ports:
+      - "8546:8080"
+    volumes:
+      - ./src:/app/src
+      - ./build.gradle:/app/build.gradle
+      - ./settings.gradle:/app/settings.gradle
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
+
+  # Adding a reverse proxy to demonstrate X-Forwarded-For headers
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - app
